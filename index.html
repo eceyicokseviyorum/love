@@ -57,16 +57,35 @@
         .btn:active {
             border: 2px inset #888;
         }
+
+        .retry-btn {
+            width: 150px;
+            padding: 5px;
+            font-size: 14px;
+            border: 2px solid #000;
+            background-color: #c0c0c0;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .retry-btn:hover {
+            background-color: #d0d0d0;
+        }
+
+        .retry-btn:active {
+            border: 2px inset #888;
+        }
     </style>
 </head>
 <body>
     <div class="message-box">
-        <div class="title-bar">Şahsi Deli'm 🤍'den Okunmamış Bir Mesajınız Bulunuyor!</div>
-        <div class="message" id="messageText">Hayatımın Aşkı mısın?</div>
+        <div class="title-bar">Mesaj</div>
+        <div class="message" id="messageText">Benimle barışır mısın?</div>
         <div class="buttons" id="buttonContainer">
             <button class="btn" id="yesBtn" onclick="showLoveMessage()">Evet</button>
             <button class="btn" id="noBtn" onmouseover="changeToYes()" onmouseout="changeToNo()">Hayır</button>
         </div>
+        <button class="retry-btn" id="retryBtn" onclick="resetMessage()" style="display: none;">İnanmadın mı? Tekrar dene!</button>
     </div>
 
     <script>
@@ -78,15 +97,30 @@
 
         function changeToNo() {
             const noBtn = document.getElementById('noBtn');
-            noBtn.textContent = "Hayır";
+            noBtn.textContent = 'Hayır';
             noBtn.onclick = null; // Tıklama işlevini kaldırır
         }
 
         function showLoveMessage() {
             const messageText = document.getElementById('messageText');
             const buttonContainer = document.getElementById('buttonContainer');
+            const retryBtn = document.getElementById('retryBtn');
             messageText.textContent = 'Seni Seviyorum Aşkım.';
-            buttonContainer.style.display = 'none'; // Butonları gizler
+            buttonContainer.style.display = 'none'; // İlk butonları gizler
+            retryBtn.style.display = 'block'; // Retry butonunu gösterir
+        }
+
+        function resetMessage() {
+            const messageText = document.getElementById('messageText');
+            const buttonContainer = document.getElementById('buttonContainer');
+            const retryBtn = document.getElementById('retryBtn');
+            const noBtn = document.getElementById('noBtn');
+            
+            messageText.textContent = 'Benimle barışır mısın?';
+            buttonContainer.style.display = 'flex'; // İlk butonları geri getirir
+            retryBtn.style.display = 'none'; // Retry butonunu gizler
+            noBtn.textContent = 'Hayır'; // Hayır butonunu sıfırlar
+            noBtn.onclick = null; // Hayır butonunun tıklama işlevini sıfırlar
         }
     </script>
 </body>
