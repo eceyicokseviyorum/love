@@ -66,6 +66,9 @@
             background-color: #c0c0c0;
             cursor: pointer;
             margin-top: 10px;
+            display: block; /* Ortalamak için */
+            margin-left: auto; /* Ortalamak için */
+            margin-right: auto; /* Ortalamak için */
         }
 
         .retry-btn:hover {
@@ -79,8 +82,8 @@
 </head>
 <body>
     <div class="message-box">
-        <div class="title-bar">Mesaj</div>
-        <div class="message" id="messageText">Benimle barışır mısın?</div>
+        <div class="title-bar">Şahsi Deli'm 🤍'den Okunmamış Bir Mesaj!</div>
+        <div class="message" id="messageText">Hayatımın Aşkı mısın?</div>
         <div class="buttons" id="buttonContainer">
             <button class="btn" id="yesBtn" onclick="showLoveMessage()">Evet</button>
             <button class="btn" id="noBtn" onmouseover="changeToYes()" onmouseout="changeToNo()">Hayır</button>
@@ -116,7 +119,7 @@
             const retryBtn = document.getElementById('retryBtn');
             const noBtn = document.getElementById('noBtn');
             
-            messageText.textContent = 'Benimle barışır mısın?';
+            messageText.textContent = 'Hayatımın Aşkı mısın?';
             buttonContainer.style.display = 'flex'; // İlk butonları geri getirir
             retryBtn.style.display = 'none'; // Retry butonunu gizler
             noBtn.textContent = 'Hayır'; // Hayır butonunu sıfırlar
